@@ -130,7 +130,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/gamalsamadov/Desktop/MyCourses/all-my-courses/Twitch-clone/teaststreem/teastreem-server/prisma/generated",
+      "value": "/Users/gamalsamadov/Desktop/MyCourses/all-my-courses/Twitch-clone/teastreem/teastreem-server/prisma/generated",
       "fromEnvVar": null
     },
     "config": {
@@ -144,7 +144,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/gamalsamadov/Desktop/MyCourses/all-my-courses/Twitch-clone/teaststreem/teastreem-server/prisma/schema.prisma",
+    "sourceFilePath": "/Users/gamalsamadov/Desktop/MyCourses/all-my-courses/Twitch-clone/teastreem/teastreem-server/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
