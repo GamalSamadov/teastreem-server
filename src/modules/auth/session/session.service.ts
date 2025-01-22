@@ -30,7 +30,7 @@ export class SessionService {
 			throw new NotFoundException('User not found in the sessions')
 		}
 
-		const keys = await this.redisService.get('*')
+		const keys = await this.redisService.keys('*')
 
 		const userSessions = []
 
