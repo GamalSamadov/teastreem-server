@@ -144,7 +144,7 @@ export class SessionService {
 		}
 
 		await this.redisService.del(
-			`${this.configService.getOrThrow<string>('SESSION_FOLDER')}:${id}`
+			`${this.configService.getOrThrow<string>('SESSION_FOLDER')}${id}`
 		)
 
 		return true
