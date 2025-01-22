@@ -52,7 +52,7 @@ type SessionMetadataModel {
 }
 
 type SessionModel {
-  createdAt: DateTime!
+  createdAt: String!
   id: ID!
   metadata: SessionMetadataModel!
   userId: String!

@@ -53,7 +53,7 @@ export class SessionModel {
 	@Field(() => String)
 	public userId: string
 
-	@Field(() => Date)
+	@Field(() => String)
 	public createdAt: string
 
 	@Field(() => SessionMetadataModel)
