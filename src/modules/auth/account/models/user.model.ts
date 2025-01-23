@@ -5,29 +5,35 @@ import type { User } from '@/prisma/generated'
 @ObjectType()
 export class UserModel implements User {
 	@Field(() => ID)
-	id: string
+	public id: string
 
 	@Field(() => String)
-	email: string
+	public email: string
 
 	@Field(() => String)
-	password: string
+	public password: string
 
 	@Field(() => String)
-	username: string
+	public username: string
 
 	@Field(() => String)
-	displayName: string
+	public displayName: string
 
 	@Field(() => String, { nullable: true })
-	avatar: string | null
+	public avatar: string | null
 
 	@Field(() => String, { nullable: true })
-	bio: string | null
+	public bio: string | null
+
+	@Field(() => Boolean)
+	public isVerified: boolean
+
+	@Field(() => Boolean)
+	public isEmailVerified: boolean
 
 	@Field(() => Date)
-	createdAt: Date
+	public createdAt: Date
 
 	@Field(() => Date)
-	updatedAt: Date
+	public updatedAt: Date
 }
