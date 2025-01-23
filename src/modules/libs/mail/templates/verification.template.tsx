@@ -26,7 +26,7 @@ export const VerificationTemplate = ({domain, token}: VerificationTemplateProps)
 
 					<Section className='text-center mt-8'>
 						<Text className='text-gray-600'>
-							If you have any questions, feel free to contact us at <Link href='mailto:help@teastream.ru' className='text-[#18B9AE] underline' >help@teastream.ru</Link>
+							If you have any questions, feel free to contact us at <Link href='mailto:info@samadov.dev' className='text-[#18B9AE] underline' >info@samadov.dev</Link>
 						</Text>
 
 					</Section>
