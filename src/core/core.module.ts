@@ -9,6 +9,7 @@ import { PasswordRecoveryModule } from '../modules/auth/password-recovery/passwo
 import { SessionModule } from '../modules/auth/session/session.module'
 import { TotpModule } from '../modules/auth/totp/totp/totp.module'
 import { VerificationModule } from '../modules/auth/verification/verification.module'
+import { CronModule } from '../modules/cron/cron.module'
 import { MailModule } from '../modules/libs/mail/mail.module'
 
 import { getGraphQLConfig } from './config/graphql.config'
@@ -35,7 +36,8 @@ import { RedisModule } from './redis/redis.module'
 		MailModule,
 		PasswordRecoveryModule,
 		TotpModule,
-		DeactivateModule
+		DeactivateModule,
+		CronModule
 	]
 })
 export class CoreModule {}
