@@ -6,7 +6,7 @@ import { Authorized } from '@/src/shared/decorators/authorized.decorator'
 import { UserAgent } from '@/src/shared/decorators/user-agent.decorator'
 import { GqlContext } from '@/src/shared/types/gql-context.types'
 
-import { AuthModel } from '../account/models/auth.mode'
+import { AuthModel } from '../account/models/auth.model'
 
 import { DeactivateService } from './deactivate.service'
 import { DeactivateAccountInput } from './inputs/deactivate-account.input'
