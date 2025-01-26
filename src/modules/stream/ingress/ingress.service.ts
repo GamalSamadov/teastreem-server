@@ -47,7 +47,7 @@ export class IngressService {
 		)
 
 		if (!ingress || !ingress.url || !ingress.streamKey) {
-			throw new BadRequestException('Не удалось создать входной поток')
+			throw new BadRequestException('Cannot create ingress.')
 		}
 
 		await this.prismaService.stream.update({

@@ -9,6 +9,7 @@ import { StorageService } from '../libs/storage/storage.service'
 
 import { ChangeStreamInfoInput } from './input/change-stream-info.input'
 import { FiltersInput } from './input/filters.input'
+import { GenerateStreamTokenInput } from './input/generate-stream-token.input'
 
 @Injectable()
 export class StreamService {
@@ -161,6 +162,22 @@ export class StreamService {
 		})
 
 		return true
+	}
+
+	public async generateStreamToken(input: GenerateStreamTokenInput) {
+		const { userId, channelId } = input
+
+		let self: { id: string; username: string }
+
+		const user = await this.prismaService.user.findUnique({
+			where: {
+				id: userId
+			}
+		})
+
+		if (user) {
+			self = {}
+		}
 	}
 
 	private async findByUserId(user: User) {
