@@ -1,5 +1,7 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 import * as Upload from 'graphql-upload/Upload.js'
+import { AccessToken } from 'livekit-server-sdk'
 import * as sharp from 'sharp'
 
 import type { Prisma, User } from '@/prisma/generated'
@@ -15,6 +17,7 @@ import { GenerateStreamTokenInput } from './input/generate-stream-token.input'
 export class StreamService {
 	public constructor(
 		private readonly prismaService: PrismaService,
+		private readonly configService: ConfigService,
 		private readonly storageService: StorageService
 	) {}
 
@@ -164,7 +167,7 @@ export class StreamService {
 		return true
 	}
 
-	public async generateStreamToken(input: GenerateStreamTokenInput) {
+	public async generateToken(input: GenerateStreamTokenInput) {
 		const { userId, channelId } = input
 
 		let self: { id: string; username: string }
@@ -176,8 +179,45 @@ export class StreamService {
 		})
 
 		if (user) {
-			self = {}
+			self = {
+				id: user.id,
+				username: user.username
+			}
+		} else {
+			self = {
+				id: userId,
+				username: `User ${Math.floor(Math.random() * 100_000)}`
+			}
 		}
+
+		const channel = await this.prismaService.user.findUnique({
+			where: {
+				id: channelId
+			}
+		})
+
+		if (!channel) {
+			throw new NotFoundException('Channel is not found')
+		}
+
+		const isHost = self.id === channelId
+
+		const token = new AccessToken(
+			this.configService.getOrThrow<string>('LIVEKIT_API_KEY'),
+			this.configService.getOrThrow<string>('LIVEKIT_API_SECRET'),
+			{
+				identity: isHost ? `Host-${self.id}` : self.id.toString(),
+				name: self.username
+			}
+		)
+
+		token.addGrant({
+			room: channel.id,
+			roomJoin: true,
+			canPublish: false
+		})
+
+		return { token: token.toJwt() }
 	}
 
 	private async findByUserId(user: User) {

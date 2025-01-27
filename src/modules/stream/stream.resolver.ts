@@ -9,6 +9,8 @@ import { FileValidationPipe } from '@/src/shared/pipes/file-validation.pipe'
 
 import { ChangeStreamInfoInput } from './input/change-stream-info.input'
 import { FiltersInput } from './input/filters.input'
+import { GenerateStreamTokenInput } from './input/generate-stream-token.input'
+import { GenerateStreamTokenModel } from './models/generate-stream-token.module'
 import { StreamModel } from './models/stream.module'
 import { StreamService } from './stream.service'
 
@@ -49,5 +51,10 @@ export class StreamResolver {
 	@Mutation(() => Boolean, { name: 'removeThumbnail' })
 	public async removeThumbnail(@Authorized() user: User) {
 		return this.streamService.removeThumbnail(user)
+	}
+
+	@Mutation(() => GenerateStreamTokenModel, { name: 'generateStreamToken' })
+	public async generateToken(@Args('data') input: GenerateStreamTokenInput) {
+		return this.streamService.generateToken(input)
 	}
 }

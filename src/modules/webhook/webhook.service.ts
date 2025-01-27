@@ -19,7 +19,6 @@ export class WebhookService {
 		)
 
 		if (event.event === 'ingress_started') {
-			console.log('=== Stream was started! ===')
 			await this.prismaService.stream.update({
 				where: {
 					ingressId: event.ingressInfo.ingressId
@@ -31,7 +30,6 @@ export class WebhookService {
 		}
 
 		if (event.event === 'ingress_ended') {
-			console.log('=== Stream was ended! ===')
 			await this.prismaService.stream.update({
 				where: {
 					ingressId: event.ingressInfo.ingressId
