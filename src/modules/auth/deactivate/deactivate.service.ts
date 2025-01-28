@@ -14,6 +14,7 @@ import { getSessionMetadata } from '@/src/shared/utils/session-metadata.util'
 import { destroySession } from '@/src/shared/utils/session.util'
 
 import { MailService } from '../../libs/mail/mail.service'
+import { TelegramService } from '../../libs/telegram/telegram.service'
 
 import { DeactivateAccountInput } from './inputs/deactivate-account.input'
 
@@ -22,7 +23,8 @@ export class DeactivateService {
 	public constructor(
 		private readonly prismaService: PrismaService,
 		private readonly configService: ConfigService,
-		private readonly mailService: MailService
+		private readonly mailService: MailService,
+		private readonly telegramService: TelegramService
 	) {}
 
 	public async deactivate(
@@ -110,6 +112,17 @@ export class DeactivateService {
 			deactivateToken.token,
 			metadata
 		)
+
+		if (
+			deactivateToken.user.notificationSettings.telegramNotifications &&
+			deactivateToken.user.telegramId
+		) {
+			await this.telegramService.sendDeactivateToken(
+				deactivateToken.user.telegramId,
+				deactivateToken.token,
+				metadata
+			)
+		}
 
 		return true
 	}

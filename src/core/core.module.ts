@@ -18,6 +18,7 @@ import { FollowModule } from '../modules/follow/follow.module'
 import { LivekitModule } from '../modules/libs/livekit/livekit.module'
 import { MailModule } from '../modules/libs/mail/mail.module'
 import { StorageModule } from '../modules/libs/storage/storage.module'
+import { TelegramModule } from '../modules/libs/telegram/telegram.module'
 import { NotificationModule } from '../modules/notification/notification.module'
 import { IngressModule } from '../modules/stream/ingress/ingress.module'
 import { StreamModule } from '../modules/stream/stream.module'
@@ -47,6 +48,7 @@ import { RedisModule } from './redis/redis.module'
 		}),
 		PrismaModule,
 		RedisModule,
+		TelegramModule,
 		AccountModule,
 		SessionModule,
 		VerificationModule,
