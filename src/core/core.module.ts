@@ -18,14 +18,19 @@ import { FollowModule } from '../modules/follow/follow.module'
 import { LivekitModule } from '../modules/libs/livekit/livekit.module'
 import { MailModule } from '../modules/libs/mail/mail.module'
 import { StorageModule } from '../modules/libs/storage/storage.module'
+import { StripeModule } from '../modules/libs/stripe/stripe.module'
 import { TelegramModule } from '../modules/libs/telegram/telegram.module'
 import { NotificationModule } from '../modules/notification/notification.module'
+import { PlanModule } from '../modules/sponsorship/plan/plan.module'
+import { SubscriptionModule } from '../modules/sponsorship/subscription/subscription.module'
+import { TransactionModule } from '../modules/sponsorship/transaction/transaction.module'
 import { IngressModule } from '../modules/stream/ingress/ingress.module'
 import { StreamModule } from '../modules/stream/stream.module'
 import { WebhookModule } from '../modules/webhook/webhook.module'
 
 import { getGraphQLConfig } from './config/graphql.config'
 import { getLiveKitConfig } from './config/livekit.config'
+import { getStripeConfig } from './config/stripe.config'
 import { PrismaModule } from './prisma/prisma.module'
 import { RedisModule } from './redis/redis.module'
 
@@ -44,6 +49,11 @@ import { RedisModule } from './redis/redis.module'
 		LivekitModule.registerAsync({
 			imports: [ConfigModule],
 			useFactory: getLiveKitConfig,
+			inject: [ConfigService]
+		}),
+		StripeModule.registerAsync({
+			imports: [ConfigModule],
+			useFactory: getStripeConfig,
 			inject: [ConfigService]
 		}),
 		PrismaModule,
@@ -67,7 +77,11 @@ import { RedisModule } from './redis/redis.module'
 		ChatModule,
 		FollowModule,
 		ChannelModule,
-		NotificationModule
+		NotificationModule,
+		StripeModule,
+		PlanModule,
+		TransactionModule,
+		SubscriptionModule
 	]
 })
 export class CoreModule {}
