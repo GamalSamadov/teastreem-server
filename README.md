@@ -3,9 +3,52 @@
 Setup dev env:
 
 - NODE_ENV='development'
+
+- GRAPHQL_PREFIX="/graphql"
+
+- APPLICATION_PORT="4200"
+- APPLICATION_URL="http://localhost:${APPLICATION_PORT}"
+- ALLOWED_ORIGIN="http://localhost:3000"
+
+- COOKIES_SECRET="secret"
+
+- SESSION_SECRET="secret"
+- SESSION_NAME="session"
+- SESSION_DOMAIN="localhost"
+- SESSION_MAX_AGE="30d"
+- SESSION_HTTP_ONLY="true"
+- SESSION_SECURE="false"
+- SESSION_FOLDER="session:"
+
 - POSTGRES_USER='root'
 - POSTGRES_PASSWORD='123456'
 - POSTGRES_HOST='localhost'
 - POSTGRES_PORT='5433'
 - POSTGRES_DB='teastreem'
 - POSTGRES_URI='postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}'
+
+- REDIS_USER="default"
+- REDIS_PASSWORD="123456"
+- REDIS_HOST="localhost"
+- REDIS_PORT="6379"
+- REDIS_URI="redis://${REDIS_USER}:${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}"
+
+- MAIL_HOST="smtp.gmail.com"
+- MAIL_PORT=587
+- MAIL_LOGIN="info@samadov.dev"
+- MAIL_PASSWORD="rpog nzkc lmdg wxgm"
+
+- S3_ENDPOINT="https://s3.us-east-2.amazonaws.com"
+- S3_REGION="us-east-2"
+- S3_ACCESS_KEY_ID="AKIA5ETDILD6CXLNDMO6"
+- S3_SECRET_ACCESS_KEY="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"
+- S3_BUCKET_NAME="teastream"
+
+- LIVEKIT_API_URL="https://teastream-rd91pkaf.livekit.cloud"
+- LIVEKIT_API_KEY="APIxHQmoKL8WhDw"
+- LIVEKIT_API_SECRET="ffJH5WzrKV9DNaGGSn8p7tFQPd0MexnRcPJSk1Qf7rTC"
+
+- TELEGRAM_BOT_TOKEN="8189890271:AAHBfolFSXpcWcaGmCPNtKfdK-wjKguNZFE"
+
+- STRIPE_SECRET_KEY="sk_test_51QmbFmLTEndfUfuJgbLiHSW7ONTh1oCtnDOEofSExKff69ljvU5OfatEiYoDT4rb01z4bqFCi4oJRga9CnS7MRb1007aiao0kn"
+- STRIPE_WEBHOOK_SECRET="whsec_lGo4J1sQByzfJphtdBgVPvXLS4YH31Ou"
