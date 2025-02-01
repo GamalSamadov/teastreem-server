@@ -101,6 +101,38 @@ export class NotificationService {
 		return notification
 	}
 
+	public async createEnableTwoFactor(userId: string) {
+		const notification = await this.prismaService.notification.create({
+			data: {
+				message: `<b className="font-medium">Обеспечьте свою безопасность!</b><p>Включите двухфакторную аутентификацию</p>`,
+				type: NotificationType.ENABLE_TWO_FACTOR,
+				user: {
+					connect: {
+						id: userId
+					}
+				}
+			}
+		})
+
+		return notification
+	}
+
+	public async createVerifyChannel(userId: string) {
+		const notification = await this.prismaService.notification.create({
+			data: {
+				message: `<b className="font-medium">Поздравляем! Ваш канал верифицирован!</b><p>Значок верификации подтверждает подлинность вашего канала и улучшает доверие зрителей</p>`,
+				type: NotificationType.VERIFIED_CHANNEL,
+				user: {
+					connect: {
+						id: userId
+					}
+				}
+			}
+		})
+
+		return notification
+	}
+
 	public async changeSettings(
 		user: User,
 		input: ChangeNotificationsSettingsInput
